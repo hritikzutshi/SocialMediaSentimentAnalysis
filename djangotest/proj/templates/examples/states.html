@@ -1,0 +1,330 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/apple-icon.png' %}">
+  <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+  <title>
+    BE-project
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- CSS Files -->
+  <link href="{% static 'css/material-dashboard.css' %}" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="{% static 'demo/demo.css' %}" rel="stylesheet" />
+  <style>
+        .box {
+        width: 150px;
+        height: 50px;
+        border: none;
+        font-size: 18px;
+        color: white;
+        background-color:#7a2696;
+        box-shadow: 4px 4px black;
+        border-radius:5px;
+        margin:15px 5px;
+        padding:15px 5px;
+      }
+     
+
+     img:hover {
+      width:300;
+      height:300;
+      box-shadow: 5px 5px 5px 5px #888888;
+      } 
+      progress{
+          -webkit-appearance: none;
+          width:90%;
+          height:15px;
+          border:none;
+          overflow: hidden;
+          color:white;
+          border-radius: 15px;
+          margin:50px;
+      }
+  
+  </style>
+</head>
+
+<body class="dark-edition">
+  <div class="wrapper ">
+    <div class="sidebar" data-color="purple" data-background-color="black" data-image="{% static 'img/sidebar-2.jpg' %}">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+      <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
+        Group Id: 42
+        </a></div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li class="nav-item  ">
+            <a class="nav-link" href="{% url 'home' %}">
+              <i class="material-icons">home</i>
+              <p>Home</p>
+            </a>
+          </li>
+         
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'trending' %}">
+              <i class="material-icons">trending_up</i>
+              <p>Trending</p>
+            </a>
+          </li>
+          <li class="nav-item  active">
+            <a class="nav-link" href="{% url 'history' %}">
+              <i class="material-icons">analytics</i>
+              <p>Corona Analysis</p>
+            </a>
+          </li>
+         
+          <li class="nav-item ">
+            <a class="nav-link" href="{% url 'map' %}">
+              <i class="material-icons">location_ons</i>
+              <p>World Maps</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="{% url 'aboutus' %}">
+              <i class="material-icons">groups</i>
+              <p>About us</p>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel">
+     <!-- Navbar -->
+     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="navbar-toggler-icon icon-bar"></span>
+          <span class="navbar-toggler-icon icon-bar"></span>
+          <span class="navbar-toggler-icon icon-bar"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+    <br><br>
+    <select class="box" id="choice" name="choice" >
+      <option disabled selected hidden>Select State->></option>
+      <option>Andrapradesh</option>
+      <option>Chandigad</option>
+      <option>Delhi </option>
+      <option>Goa</option>
+      <option>Andaman Nicobar</option> 
+      <option>Bihar</option>
+      <option>Maharashtra</option>
+      <option>Panjab</option>
+      <option>Rajastan</option>
+      <option>West Bengal</option>
+      <option>All States</option>
+      </select>
+
+<button class="box" style="width:10%" id="showdata" onclick="ShowPlots()" >
+Show
+</button>
+<div class="navbar-wrapper">
+ <p class="navbar-brand" href="javascript:void(0)" style="color:white;" id="month"></p>
+</div>
+
+        
+<script>
+  function ShowPlots(){
+   var state = document.getElementById('choice').value;
+   document.getElementById("month").innerHTML="Orange:Infected Green:Recovered Brown:Deceased";
+    if(state == 'Andaman Nicobar'){
+    document.getElementById('1').style.display='block';
+    document.getElementById('2').style.display='none';
+    document.getElementById('3').style.display='none';
+    document.getElementById('4').style.display='none';
+    document.getElementById('5').style.display='none';
+    document.getElementById('6').style.display='none';
+    document.getElementById('7').style.display='none';
+    document.getElementById('8').style.display='none';
+    document.getElementById('9').style.display='none';
+    document.getElementById('10').style.display='none';
+    document.getElementById('100').style.display='none';
+
+    }
+    else if(state == 'Andrapradesh'){
+    document.getElementById('2').style.display='block';
+    document.getElementById('1').style.display='none';
+    document.getElementById('3').style.display='none';
+    document.getElementById('4').style.display='none';
+    document.getElementById('5').style.display='none';
+    document.getElementById('6').style.display='none';
+    document.getElementById('7').style.display='none';
+    document.getElementById('8').style.display='none';
+    document.getElementById('9').style.display='none';
+    document.getElementById('10').style.display='none';
+    document.getElementById('100').style.display='none';
+
+      
+  }
+    else if(state == 'Bihar'){
+    document.getElementById('3').style.display='block';
+    document.getElementById('1').style.display='none';
+    document.getElementById('2').style.display='none';
+    document.getElementById('4').style.display='none';
+    document.getElementById('5').style.display='none';
+    document.getElementById('6').style.display='none';
+    document.getElementById('7').style.display='none';
+    document.getElementById('8').style.display='none';
+    document.getElementById('9').style.display='none';
+    document.getElementById('10').style.display='none';   
+    document.getElementById('100').style.display='none';
+   
+  }
+  else if(state == 'Chandigad'){
+    document.getElementById('4').style.display='block';
+    document.getElementById('1').style.display='none';
+    document.getElementById('3').style.display='none';
+    document.getElementById('5').style.display='none';
+    document.getElementById('2').style.display='none';
+    document.getElementById('6').style.display='none';
+    document.getElementById('7').style.display='none';
+    document.getElementById('8').style.display='none';
+    document.getElementById('9').style.display='none';
+    document.getElementById('10').style.display='none';
+    document.getElementById('100').style.display='none';
+   
+    }
+
+    else if(state == 'Delhi'){
+    document.getElementById('5').style.display='block';
+    document.getElementById('1').style.display='none';
+    document.getElementById('3').style.display='none';
+    document.getElementById('2').style.display='none';
+    document.getElementById('4').style.display='none';
+    document.getElementById('6').style.display='none';
+    document.getElementById('7').style.display='none';
+    document.getElementById('8').style.display='none';
+    document.getElementById('9').style.display='none';
+    document.getElementById('10').style.display='none'; 
+    document.getElementById('100').style.display='none';
+
+  }
+    else if(state == 'Goa'){
+    document.getElementById('6').style.display='block';
+    document.getElementById('1').style.display='none';
+    document.getElementById('3').style.display='none';
+    document.getElementById('4').style.display='none';
+    document.getElementById('2').style.display='none';
+    document.getElementById('5').style.display='none';
+    document.getElementById('7').style.display='none';
+    document.getElementById('8').style.display='none';
+    document.getElementById('9').style.display='none';
+    document.getElementById('10').style.display='none';
+    document.getElementById('100').style.display='none';
+
+    }
+    else if(state == 'Maharashtra'){
+    document.getElementById('7').style.display='block';
+    document.getElementById('1').style.display='none';
+    document.getElementById('3').style.display='none';
+    document.getElementById('4').style.display='none';
+    document.getElementById('2').style.display='none';
+    document.getElementById('5').style.display='none';
+    document.getElementById('6').style.display='none';
+    document.getElementById('8').style.display='none';
+    document.getElementById('9').style.display='none';
+    document.getElementById('10').style.display='none';
+    document.getElementById('100').style.display='none';
+
+    }
+
+    else if(state == 'Panjab'){
+    document.getElementById('8').style.display='block';
+    document.getElementById('1').style.display='none';
+    document.getElementById('3').style.display='none';
+    document.getElementById('4').style.display='none';
+    document.getElementById('2').style.display='none';
+    document.getElementById('5').style.display='none';
+    document.getElementById('7').style.display='none';
+    document.getElementById('6').style.display='none';
+    document.getElementById('9').style.display='none';
+    document.getElementById('10').style.display='none';
+    document.getElementById('100').style.display='none';
+
+    }
+    else if(state == 'Rajastan'){
+    document.getElementById('9').style.display='block';
+    document.getElementById('1').style.display='none';
+    document.getElementById('3').style.display='none';
+    document.getElementById('4').style.display='none';
+    document.getElementById('2').style.display='none';
+    document.getElementById('5').style.display='none';
+    document.getElementById('7').style.display='none';
+    document.getElementById('8').style.display='none';
+    document.getElementById('6').style.display='none';
+    document.getElementById('10').style.display='none';
+    document.getElementById('100').style.display='none';
+
+    }
+    else if(state == 'West Bengal'){
+    document.getElementById('10').style.display='block';
+    document.getElementById('2').style.display='none';
+    document.getElementById('3').style.display='none';
+    document.getElementById('4').style.display='none';
+    document.getElementById('5').style.display='none';
+    document.getElementById('6').style.display='none';
+    document.getElementById('7').style.display='none';
+    document.getElementById('8').style.display='none';
+    document.getElementById('9').style.display='none';
+    document.getElementById('1').style.display='none';
+    document.getElementById('100').style.display='none';
+
+    }
+    else if(state == 'All States'){
+    document.getElementById('10').style.display='none';
+    document.getElementById('2').style.display='none';
+    document.getElementById('3').style.display='none';
+    document.getElementById('4').style.display='none';
+    document.getElementById('5').style.display='none';
+    document.getElementById('6').style.display='none';
+    document.getElementById('7').style.display='none';
+    document.getElementById('8').style.display='none';
+    document.getElementById('9').style.display='none';
+    document.getElementById('1').style.display='none';
+    document.getElementById('100').style.display='block';
+
+    } 
+   
+
+  }
+  </script>
+  
+    <iframe src="{% static 'html/bihar.html' %}" id="3" style="margin:10px;display:none;" height="800" width="95%">
+    </iframe>
+    <iframe src="{% static 'html/chnadigar.html' %}" id="4" style="margin:10px;display:none;" height="800" width="95%">
+    </iframe>
+    <iframe src="{% static 'html/delhi.html' %}" id="5" style="margin:10px;display:none;" height="800" width="95%">
+    </iframe>
+    <iframe src="{% static 'html/goa.html' %}" id="6" style="margin:10px;display:none;" height="800" width="95%">
+    </iframe>
+    <iframe src="{% static 'html/maharashtra.html' %}" id="7" style="margin:10px;display:none;" height="800" width="95%">
+    </iframe>
+    <iframe src="{% static 'html/panjab.html' %}" id="8" style="margin:10px;display:none;" height="800" width="95%">
+    </iframe>
+    <iframe src="{% static 'html/rajastan.html' %}" id="9" style="margin:10px;display:none;" height="800" width="95%">
+    </iframe>
+    <iframe src="{% static 'html/andaman.html' %}" id="1" style="margin:10px;display:none;" height="800" width="95%">
+    </iframe>
+    <iframe src="{% static 'html/westbengal.html' %}" id="10" style="margin:10px;display:none;" height="800" width="95%">
+    </iframe>
+    <iframe src="{% static 'html/andra.html' %}" id="2" style="margin:10px;display:none;" height="800" width="95%">
+    </iframe>
+    <iframe src="{% static 'html/india_states.html' %}" id="100" style="margin:10px;display:none;" height="800" width="95%">
+    </iframe>
+</body>
+
+</html>

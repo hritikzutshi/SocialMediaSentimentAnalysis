@@ -1,0 +1,424 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/apple-icon.png' %}">
+  <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+  <title>
+    BE-project
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- CSS Files -->
+  <link href="{% static 'css/material-dashboard.css' %}" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="{% static 'demo/demo.css' %}" rel="stylesheet" />
+  <style>
+        .box {
+        width: 150px;
+        height: 50px;
+        border: none;
+        font-size: 18px;
+        color: white;
+        background-color:#7a2696;
+        box-shadow: 4px 4px black;
+        border-radius:5px;
+        margin:15px 5px;
+        padding:15px 5px;
+      }
+     
+
+     img:hover {
+      width:300;
+      height:300;
+      box-shadow: 5px 5px 5px 5px #888888;
+      } 
+      progress{
+          -webkit-appearance: none;
+          width:90%;
+          height:15px;
+          border:none;
+          overflow: hidden;
+          color:white;
+          border-radius: 15px;
+          margin:50px;
+      }
+  
+  </style>
+</head>
+
+<body class="dark-edition">
+  <div class="wrapper ">
+    <div class="sidebar" data-color="purple" data-background-color="black" data-image="{% static 'img/sidebar-2.jpg' %}">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+      <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
+        Group Id: 42
+        </a></div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li class="nav-item  ">
+            <a class="nav-link" href="{% url 'home' %}">
+              <i class="material-icons">home</i>
+              <p>Home</p>
+            </a>
+          </li>
+         
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'trending' %}">
+              <i class="material-icons">trending_up</i>
+              <p>Trending</p>
+            </a>
+          </li>
+          <li class="nav-item  active">
+            <a class="nav-link" href="{% url 'history' %}">
+              <i class="material-icons">analytics</i>
+              <p>Corona Analysis</p>
+            </a>
+          </li>
+         
+          <li class="nav-item ">
+            <a class="nav-link" href="{% url 'map' %}">
+              <i class="material-icons">location_ons</i>
+              <p>World Maps</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="{% url 'aboutus' %}">
+              <i class="material-icons">groups</i>
+              <p>About us</p>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel">
+     <!-- Navbar -->
+     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="navbar-toggler-icon icon-bar"></span>
+          <span class="navbar-toggler-icon icon-bar"></span>
+          <span class="navbar-toggler-icon icon-bar"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+    <br><br>
+    <select class="box" id="choice" name="choice" >
+      <option disabled selected hidden>Select Month>></option>
+      <option>January-2021</option>
+      <option>February-2021</option>
+      <option>March-2021</option>
+      <option>December-2020</option>
+      <option>November-2020</option>
+      <option>October-2020</option>
+      <option>September-2020</option>
+      <option>August-2020</option>
+      <option>July-2020</option>
+      <option>June-2020</option>
+      <option>May-2020</option>
+      <option>April-2020</option>
+      <option>March-2020</option>
+      
+      </select>
+
+<button class="box" style="width:10%" id="showdata" onclick="ShowPlots()" >
+Show
+</button>
+<div class="navbar-wrapper">
+<center> <p class="navbar-brand" href="javascript:void(0)" style="color:white;" id="month"></p>
+</center>
+</div>
+
+        
+<script>
+  function ShowPlots(){
+   var month = document.getElementById('choice').value;
+   
+    if(month == 'January-2021'){
+    document.getElementById("month").innerHTML=month;
+    document.getElementById('1').style.display='block';
+    document.getElementById('2').style.display='none';
+    document.getElementById('3').style.display='none';
+    document.getElementById('4').style.display='none';
+    document.getElementById('5').style.display='none';
+    document.getElementById('6').style.display='none';
+    document.getElementById('7').style.display='none';
+    document.getElementById('8').style.display='none';
+    document.getElementById('9').style.display='none';
+    document.getElementById('10').style.display='none';
+    document.getElementById('11').style.display='none';
+    document.getElementById('12').style.display='none';
+    document.getElementById('13').style.display='none';
+    document.getElementById('14').style.display='none';
+    }
+    else if(month == 'February-2021'){
+      document.getElementById("month").innerHTML=month;
+    document.getElementById('2').style.display='block';
+    document.getElementById('1').style.display='none';
+    document.getElementById('3').style.display='none';
+    document.getElementById('4').style.display='none';
+    document.getElementById('5').style.display='none';
+    document.getElementById('6').style.display='none';
+    document.getElementById('7').style.display='none';
+    document.getElementById('8').style.display='none';
+    document.getElementById('9').style.display='none';
+    document.getElementById('10').style.display='none';
+    document.getElementById('11').style.display='none';
+    document.getElementById('12').style.display='none';
+    document.getElementById('13').style.display='none';
+    document.getElementById('14').style.display='none';
+      
+  }
+    else if(month == 'March-2021'){
+      document.getElementById("month").innerHTML=month;
+    document.getElementById('3').style.display='block';
+    document.getElementById('1').style.display='none';
+    document.getElementById('2').style.display='none';
+    document.getElementById('4').style.display='none';
+    document.getElementById('5').style.display='none';
+    document.getElementById('6').style.display='none';
+    document.getElementById('7').style.display='none';
+    document.getElementById('8').style.display='none';
+    document.getElementById('9').style.display='none';
+    document.getElementById('10').style.display='none';
+    document.getElementById('11').style.display='none';
+    document.getElementById('12').style.display='none';
+    document.getElementById('13').style.display='none';
+    document.getElementById('14').style.display='none';      
+  }
+  else if(month == 'April-2021'){
+    document.getElementById("month").innerHTML=month;
+    document.getElementById('4').style.display='block';
+    document.getElementById('1').style.display='none';
+    document.getElementById('3').style.display='none';
+    document.getElementById('5').style.display='none';
+    document.getElementById('2').style.display='none';
+    document.getElementById('6').style.display='none';
+    document.getElementById('7').style.display='none';
+    document.getElementById('8').style.display='none';
+    document.getElementById('9').style.display='none';
+    document.getElementById('10').style.display='none';
+    document.getElementById('11').style.display='none';
+    document.getElementById('12').style.display='none';
+    document.getElementById('13').style.display='none';
+    document.getElementById('14').style.display='none';    
+    }
+
+    else if(month == 'March-2020'){
+      document.getElementById("month").innerHTML=month;
+    document.getElementById('5').style.display='block';
+    document.getElementById('1').style.display='none';
+    document.getElementById('3').style.display='none';
+    document.getElementById('2').style.display='none';
+    document.getElementById('4').style.display='none';
+    document.getElementById('6').style.display='none';
+    document.getElementById('7').style.display='none';
+    document.getElementById('8').style.display='none';
+    document.getElementById('9').style.display='none';
+    document.getElementById('10').style.display='none';
+    document.getElementById('11').style.display='none';
+    document.getElementById('12').style.display='none';
+    document.getElementById('13').style.display='none';
+    document.getElementById('14').style.display='none';  
+  }
+    else if(month == 'April-2020'){
+      document.getElementById("month").innerHTML=month;
+    document.getElementById('6').style.display='block';
+    document.getElementById('1').style.display='none';
+    document.getElementById('3').style.display='none';
+    document.getElementById('4').style.display='none';
+    document.getElementById('2').style.display='none';
+    document.getElementById('5').style.display='none';
+    document.getElementById('7').style.display='none';
+    document.getElementById('8').style.display='none';
+    document.getElementById('9').style.display='none';
+    document.getElementById('10').style.display='none';
+    document.getElementById('11').style.display='none';
+    document.getElementById('12').style.display='none';
+    document.getElementById('13').style.display='none';
+    document.getElementById('14').style.display='none';
+    }
+    else if(month == 'May-2020'){
+      document.getElementById("month").innerHTML=month;
+    document.getElementById('7').style.display='block';
+    document.getElementById('1').style.display='none';
+    document.getElementById('3').style.display='none';
+    document.getElementById('4').style.display='none';
+    document.getElementById('2').style.display='none';
+    document.getElementById('5').style.display='none';
+    document.getElementById('6').style.display='none';
+    document.getElementById('8').style.display='none';
+    document.getElementById('9').style.display='none';
+    document.getElementById('10').style.display='none';
+    document.getElementById('11').style.display='none';
+    document.getElementById('12').style.display='none';
+    document.getElementById('13').style.display='none';
+    document.getElementById('14').style.display='none';
+    }
+
+    else if(month == 'June-2020'){
+      document.getElementById("month").innerHTML=month;
+    document.getElementById('8').style.display='block';
+    document.getElementById('1').style.display='none';
+    document.getElementById('3').style.display='none';
+    document.getElementById('4').style.display='none';
+    document.getElementById('2').style.display='none';
+    document.getElementById('5').style.display='none';
+    document.getElementById('7').style.display='none';
+    document.getElementById('6').style.display='none';
+    document.getElementById('9').style.display='none';
+    document.getElementById('10').style.display='none';
+    document.getElementById('11').style.display='none';
+    document.getElementById('12').style.display='none';
+    document.getElementById('13').style.display='none';
+    document.getElementById('14').style.display='none';  
+    }
+    else if(month == 'July-2020'){
+      document.getElementById("month").innerHTML=month;
+    document.getElementById('9').style.display='block';
+    document.getElementById('1').style.display='none';
+    document.getElementById('3').style.display='none';
+    document.getElementById('4').style.display='none';
+    document.getElementById('2').style.display='none';
+    document.getElementById('5').style.display='none';
+    document.getElementById('7').style.display='none';
+    document.getElementById('8').style.display='none';
+    document.getElementById('6').style.display='none';
+    document.getElementById('10').style.display='none';
+    document.getElementById('11').style.display='none';
+    document.getElementById('12').style.display='none';
+    document.getElementById('13').style.display='none';
+    document.getElementById('14').style.display='none';
+    }
+    else if(month == 'August-2020'){
+      document.getElementById("month").innerHTML=month;
+    document.getElementById('10').style.display='block';
+    document.getElementById('2').style.display='none';
+    document.getElementById('3').style.display='none';
+    document.getElementById('4').style.display='none';
+    document.getElementById('5').style.display='none';
+    document.getElementById('6').style.display='none';
+    document.getElementById('7').style.display='none';
+    document.getElementById('8').style.display='none';
+    document.getElementById('9').style.display='none';
+    document.getElementById('1').style.display='none';
+    document.getElementById('11').style.display='none';
+    document.getElementById('12').style.display='none';
+    document.getElementById('13').style.display='none';
+    document.getElementById('14').style.display='none';
+    }
+    else if(month == 'September-2020'){
+      document.getElementById("month").innerHTML=month;
+    document.getElementById('11').style.display='block';
+    document.getElementById('2').style.display='none';
+    document.getElementById('3').style.display='none';
+    document.getElementById('4').style.display='none';
+    document.getElementById('5').style.display='none';
+    document.getElementById('6').style.display='none';
+    document.getElementById('7').style.display='none';
+    document.getElementById('8').style.display='none';
+    document.getElementById('9').style.display='none';
+    document.getElementById('10').style.display='none';
+    document.getElementById('1').style.display='none';
+    document.getElementById('12').style.display='none';
+    document.getElementById('13').style.display='none';
+    document.getElementById('14').style.display='none';
+    }
+    else if(month == 'October-2020'){
+      document.getElementById("month").innerHTML=month;
+    document.getElementById('12').style.display='block';
+    document.getElementById('2').style.display='none';
+    document.getElementById('3').style.display='none';
+    document.getElementById('4').style.display='none';
+    document.getElementById('5').style.display='none';
+    document.getElementById('6').style.display='none';
+    document.getElementById('7').style.display='none';
+    document.getElementById('8').style.display='none';
+    document.getElementById('9').style.display='none';
+    document.getElementById('10').style.display='none';
+    document.getElementById('1').style.display='none';
+    document.getElementById('11').style.display='none';
+    document.getElementById('13').style.display='none';
+    document.getElementById('14').style.display='none';
+    }
+    else if(month == 'November-2020'){
+      document.getElementById("month").innerHTML=month;
+    document.getElementById('13').style.display='block';
+    document.getElementById('2').style.display='none';
+    document.getElementById('3').style.display='none';
+    document.getElementById('4').style.display='none';
+    document.getElementById('5').style.display='none';
+    document.getElementById('6').style.display='none';
+    document.getElementById('7').style.display='none';
+    document.getElementById('8').style.display='none';
+    document.getElementById('9').style.display='none';
+    document.getElementById('10').style.display='none';
+    document.getElementById('1').style.display='none';
+    document.getElementById('12').style.display='none';
+    document.getElementById('11').style.display='none';
+    document.getElementById('14').style.display='none';
+    }
+    else if(month == 'December-2020'){
+      document.getElementById("month").innerHTML=month;
+    document.getElementById('14').style.display='block';
+    document.getElementById('2').style.display='none';
+    document.getElementById('3').style.display='none';
+    document.getElementById('4').style.display='none';
+    document.getElementById('5').style.display='none';
+    document.getElementById('6').style.display='none';
+    document.getElementById('7').style.display='none';
+    document.getElementById('8').style.display='none';
+    document.getElementById('9').style.display='none';
+    document.getElementById('10').style.display='none';
+    document.getElementById('1').style.display='none';
+    document.getElementById('12').style.display='none';
+    document.getElementById('11').style.display='none';
+    document.getElementById('13').style.display='none';
+    }
+
+  }
+  </script>
+  
+    <iframe src="{% static 'html/1-21.html' %}" id="1" style="margin:10px;display:none;" height="800" width="95%">
+    </iframe>
+    <iframe src="{% static 'html/2-21.html' %}" id="2" style="margin:10px;display:none;" height="800" width="95%">
+    </iframe>
+    <iframe src="{% static 'html/3-21.html' %}" id="3" style="margin:10px;display:none;" height="800" width="95%">
+    </iframe>
+    <iframe src="{% static 'html/4-21.html' %}" id="4" style="margin:10px;display:none;" height="800" width="95%">
+    </iframe>
+    <iframe src="{% static 'html/3.html' %}" id="5" style="margin:10px;display:none;" height="800" width="95%">
+    </iframe>
+    <iframe src="{% static 'html/4.html' %}" id="6" style="margin:10px;display:none;" height="800" width="95%">
+    </iframe>
+    <iframe src="{% static 'html/5.html' %}" id="7" style="margin:10px;display:none;" height="800" width="95%">
+    </iframe>
+    <iframe src="{% static 'html/6.html' %}" id="8" style="margin:10px;display:none;" height="800" width="95%">
+    </iframe>
+    <iframe src="{% static 'html/7.html' %}" id="9" style="margin:10px;display:none;" height="800" width="95%">
+    </iframe>
+    <iframe src="{% static 'html/8.html' %}" id="10" style="margin:10px;display:none;" height="800" width="95%">
+    </iframe>
+    <iframe src="{% static 'html/9.html' %}" id="11" style="margin:10px;display:none;" height="800" width="95%">
+    </iframe>
+    <iframe src="{% static 'html/10.html' %}" id="12" style="margin:10px;display:none;" height="800" width="95%">
+    </iframe>
+    <iframe src="{% static 'html/11.html' %}" id="13" style="margin:10px;display:none;" height="800" width="95%">
+    </iframe>
+    <iframe src="{% static 'html/12.html' %}" id="14" style="margin:10px;display:none;" height="800" width="95%">
+    </iframe>  
+
+</body>
+
+</html>

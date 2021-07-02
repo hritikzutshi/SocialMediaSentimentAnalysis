@@ -1,0 +1,481 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/apple-icon.png' %}">
+  <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    Group ID : 42
+  </title>
+  <style>
+  
+    .box {
+        width: 150px;
+        height: 50px;
+        border: none;
+        font-size: 18px;
+        color: white;
+        background-color:#7a2696;
+        box-shadow: 4px 4px black;
+        border-radius:5px;
+        margin:15px 5px;
+        padding:15px 5px;
+      }
+     
+    </style>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- CSS Files -->
+  <link href="{% static 'css/material-dashboard.css' %}" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="{% static 'demo/demo.css' %}" rel="stylesheet" />
+</head>
+
+<body class="dark-edition">
+  <div class="wrapper ">
+    <div class="sidebar" data-color="purple" data-background-color="black" data-image="{% static 'img/sidebar-2.jpg' %}">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+      <div class="logo"><a href="" class="simple-text logo-normal">
+        Group Id: 42
+        </a></div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li class="nav-item  ">
+            <a class="nav-link" href="{% url 'home' %}">
+              <i class="material-icons">home</i>
+              <p>Home</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="{% url 'trending' %}">
+              <i class="material-icons">trending_up</i>
+              <p>Trending</p>
+            </a>
+          </li>
+          <li class="nav-item active ">
+            <a class="nav-link" href="{% url 'history' %} ">
+              <i class="material-icons">analytics</i>
+              <p>Corona Analysis</p>
+            </a>
+          </li>
+          
+          <li class="nav-item ">
+            <a class="nav-link" href="{% url 'map' %} ">
+              <i class="material-icons">location_ons</i>
+              <p>World Maps</p>
+            </a>
+          </li>
+          
+          <li class="nav-item ">
+            <a class="nav-link" href="{% url 'aboutus' %} ">
+              <i class="material-icons">groups</i>
+              <p>About us</p>
+            </a>
+          </li>
+         
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel">
+       <!-- Navbar -->
+       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <a class="navbar-brand" href="javascript:void(0)">Corona Analysis</a>
+          </div>
+          
+          
+          
+          
+         
+        </div>
+      </nav>
+      <div class="content">
+        <div class="container-fluid">      
+      <select class="box" id="choice" name="choice" >
+      <option disabled selected hidden>Select Month</option>
+      <option>March-20</option>
+      <option>April-20</option>
+      <option>May-20</option>
+      <option>June-20</option>
+      <option>July-20</option>
+      <option>August-20</option>
+      <option>September-20</option>
+      <option>October-20</option>
+      <option>November-20</option>
+      <option>December-20</option>
+      <option>January-21</option>
+      <option>February-21</option>
+      <option>March-21</option>
+      <option>April-21</option>
+      </select>
+
+        <button class="box" style="width:10%" id="showdata" onclick="ShowPlots()" >
+        Show
+        </button>
+
+
+
+
+<div style="height: 500px; align-items:center; border: white;" id="marchplots" class="container-fluid" >
+  <img id="nocases" src="{% static 'img/no_of_cases_india.jpeg' %}" style="display:none;width:800px; border: 5px solid #000;"/><br>
+  <img id="posneg" src="{% static 'img/positive_negative_tweets.jpeg' %}" style="display:none;width:800px; border: 5px solid #000;"/><br>
+  <img id="piemar" src="{% static 'img/Mar20.png' %}" style="display:none;width:800px; border: 5px solid #000;"/><br>
+  <img id="pieapr" src="{% static 'img/April20.png' %}" style="display:none;width:800px; border: 5px solid #000;"/><br>
+  <img id="piemay" src="{% static 'img/May20.png' %}" style="display:none;width:800px; border: 5px solid #000;"/><br>
+  <img id="piejune" src="{% static 'img/June20.png' %}" style="display:none;width:800px; border: 5px solid #000;"/><br>
+
+  <img id="piejuly" src="{% static 'img/July.png' %}" style="display:none;width:800px; border: 5px solid #000;"/><br>
+  <img id="pieaug" src="{% static 'img/August.png' %}" style="display:none;width:800px; border: 5px solid #000;"/><br>
+  <img id="piesept" src="{% static 'img/September.png' %}" style="display:none;width:800px; border: 5px solid #000;"/><br>
+  <img id="pieoct" src="{% static 'img/October.png' %}" style="display:none;width:800px; border: 5px solid #000;"/><br>
+  <img id="pienov" src="{% static 'img/November.png' %}" style="display:none;width:800px; border: 5px solid #000;"/><br>
+  <img id="piedec" src="{% static 'img/Dec.png' %}" style="display:none;width:800px; border: 5px solid #000;"/><br>
+  <img id="piejan21" src="{% static 'img/Jan21.png' %}" style="display:none;width:800px; border: 5px solid #000;"/><br>
+  <img id="piefeb21" src="{% static 'img/Feb21.png' %}" style="display:none;width:800px; border: 5px solid #000;"/><br>
+  <img id="piemar21" src="{% static 'img/Mar21.png' %}" style="display:none;width:800px; border: 5px solid #000;"/><br>
+  <img id="pieapr21" src="{% static 'img/Apr21.png' %}" style="display:none;width:800px; border: 5px solid #000;"/><br>
+
+</div>
+</div></div>
+
+
+      <!-- End Navbar -->
+</body>
+<script>
+function ShowPlots(){
+ var month = document.getElementById('choice').value
+ //document.getElementById('valuegen').innerHTML=month
+  if(month == 'March-20'){
+  
+  document.getElementById('piemar').style.display='block';
+  document.getElementById('pieapr').style.display='None';
+  document.getElementById('piemay').style.display='None';
+  document.getElementById('piejune').style.display='None';
+  document.getElementById('piejuly').style.display='None';
+  document.getElementById('pieaug').style.display='None';
+  document.getElementById('piesept').style.display='None';
+  document.getElementById('pieoct').style.display='None';
+  document.getElementById('pienov').style.display='None';
+  document.getElementById('piedec').style.display='None';
+  document.getElementById('piejan21').style.display='None';
+  document.getElementById('piefeb21').style.display='None';
+  document.getElementById('piemar21').style.display='none';
+  document.getElementById('pieapr21').style.display='None';
+  document.getElementById('nocases').style.display='None';
+  document.getElementById('posneg').style.display='None';
+
+
+  }
+  else if(month == 'April-20'){
+ 
+  document.getElementById('piemar').style.display='None';
+  document.getElementById('pieapr').style.display='Block';
+  document.getElementById('piemay').style.display='None';
+  document.getElementById('piejune').style.display='None';
+  document.getElementById('piejuly').style.display='None';
+  document.getElementById('pieaug').style.display='None';
+  document.getElementById('piesept').style.display='None';
+  document.getElementById('pieoct').style.display='None';
+  document.getElementById('pienov').style.display='None';
+  document.getElementById('piedec').style.display='None';
+  document.getElementById('piejan21').style.display='None';
+  document.getElementById('piefeb21').style.display='None';
+  document.getElementById('piemar21').style.display='none';
+  document.getElementById('pieapr21').style.display='None';
+  document.getElementById('nocases').style.display='None';
+  document.getElementById('posneg').style.display='None';
+
+  }
+  else if(month == 'May-20'){
+ 
+ document.getElementById('piemar').style.display='None';
+ document.getElementById('pieapr').style.display='None';
+ document.getElementById('piemay').style.display='Block';
+ document.getElementById('piejune').style.display='None';
+ document.getElementById('piejuly').style.display='None';
+ document.getElementById('pieaug').style.display='None';
+ document.getElementById('piesept').style.display='None';
+ document.getElementById('pieoct').style.display='None';
+ document.getElementById('pienov').style.display='None';
+ document.getElementById('piedec').style.display='None';
+ document.getElementById('piejan21').style.display='None';
+ document.getElementById('piefeb21').style.display='None';
+ document.getElementById('piemar21').style.display='none';
+ document.getElementById('pieapr21').style.display='None';
+ document.getElementById('nocases').style.display='None';
+  document.getElementById('posneg').style.display='None';
+
+ }
+ else if(month == 'June-20'){
+ 
+ document.getElementById('piemar').style.display='None';
+ document.getElementById('pieapr').style.display='None';
+ document.getElementById('piemay').style.display='None';
+ document.getElementById('piejune').style.display='block';
+ document.getElementById('piejuly').style.display='None';
+ document.getElementById('pieaug').style.display='None';
+ document.getElementById('piesept').style.display='None';
+ document.getElementById('pieoct').style.display='None';
+ document.getElementById('pienov').style.display='None';
+ document.getElementById('piedec').style.display='None';
+ document.getElementById('piejan21').style.display='None';
+ document.getElementById('piefeb21').style.display='None';
+ document.getElementById('piemar21').style.display='none';
+ document.getElementById('pieapr21').style.display='None';
+ document.getElementById('nocases').style.display='None';
+ document.getElementById('posneg').style.display='None';
+
+ }
+ else if(month == 'July-20'){
+ 
+ document.getElementById('piemar').style.display='None';
+ document.getElementById('pieapr').style.display='none';
+ document.getElementById('piemay').style.display='None';
+ document.getElementById('piejune').style.display='None';
+ document.getElementById('piejuly').style.display='block';
+ document.getElementById('pieaug').style.display='None';
+ document.getElementById('piesept').style.display='None';
+ document.getElementById('pieoct').style.display='None';
+ document.getElementById('pienov').style.display='None';
+ document.getElementById('piedec').style.display='None';
+ document.getElementById('piejan21').style.display='None';
+ document.getElementById('piefeb21').style.display='None';
+ document.getElementById('piemar21').style.display='none';
+ document.getElementById('pieapr21').style.display='None';
+ document.getElementById('nocases').style.display='None';
+ document.getElementById('posneg').style.display='None';
+
+ }
+ else if(month == 'August-20'){
+ 
+ document.getElementById('piemar').style.display='None';
+ document.getElementById('pieapr').style.display='none';
+ document.getElementById('piemay').style.display='None';
+ document.getElementById('piejune').style.display='None';
+ document.getElementById('piejuly').style.display='None';
+ document.getElementById('pieaug').style.display='block';
+ document.getElementById('piesept').style.display='None';
+ document.getElementById('pieoct').style.display='None';
+ document.getElementById('pienov').style.display='None';
+ document.getElementById('piedec').style.display='None';
+ document.getElementById('piejan21').style.display='None';
+ document.getElementById('piefeb21').style.display='None';
+ document.getElementById('piemar21').style.display='none';
+ document.getElementById('pieapr21').style.display='None';
+ document.getElementById('nocases').style.display='None';
+ document.getElementById('posneg').style.display='None';
+
+ }
+ else if(month == 'September-20'){
+ 
+ document.getElementById('piemar').style.display='None';
+ document.getElementById('pieapr').style.display='none';
+ document.getElementById('piemay').style.display='None';
+ document.getElementById('piejune').style.display='None';
+ document.getElementById('piejuly').style.display='None';
+ document.getElementById('pieaug').style.display='None';
+ document.getElementById('piesept').style.display='block';
+ document.getElementById('pieoct').style.display='None';
+ document.getElementById('pienov').style.display='None';
+ document.getElementById('piedec').style.display='None';
+ document.getElementById('piejan21').style.display='None';
+ document.getElementById('piefeb21').style.display='None';
+ document.getElementById('piemar21').style.display='none';
+ document.getElementById('pieapr21').style.display='None';
+ document.getElementById('nocases').style.display='None';
+ document.getElementById('posneg').style.display='None';
+
+ }
+ else if(month == 'October-20'){
+ 
+ document.getElementById('piemar').style.display='None';
+ document.getElementById('pieapr').style.display='None';
+ document.getElementById('piemay').style.display='None';
+ document.getElementById('piejune').style.display='None';
+ document.getElementById('piejuly').style.display='None';
+ document.getElementById('pieaug').style.display='None';
+ document.getElementById('piesept').style.display='None';
+ document.getElementById('pieoct').style.display='block';
+ document.getElementById('pienov').style.display='None';
+ document.getElementById('piedec').style.display='None';
+ document.getElementById('piejan21').style.display='None';
+ document.getElementById('piefeb21').style.display='None';
+ document.getElementById('piemar21').style.display='None';
+ document.getElementById('pieapr21').style.display='None';
+ document.getElementById('nocases').style.display='None';
+  document.getElementById('posneg').style.display='None';
+
+ }
+ else if(month == 'November-20'){
+ 
+ document.getElementById('piemar').style.display='None';
+ document.getElementById('pieapr').style.display='None';
+ document.getElementById('piemay').style.display='None';
+ document.getElementById('piejune').style.display='None';
+ document.getElementById('piejuly').style.display='None';
+ document.getElementById('pieaug').style.display='None';
+ document.getElementById('piesept').style.display='None';
+ document.getElementById('pieoct').style.display='None';
+ document.getElementById('pienov').style.display='block';
+ document.getElementById('piedec').style.display='None';
+ document.getElementById('piejan21').style.display='None';
+ document.getElementById('piefeb21').style.display='None';
+ document.getElementById('piemar21').style.display='None';
+ document.getElementById('pieapr21').style.display='None';
+ document.getElementById('nocases').style.display='None';
+ document.getElementById('posneg').style.display='None';
+
+ }
+ else if(month == 'December-20'){
+ 
+ document.getElementById('piemar').style.display='None';
+ document.getElementById('pieapr').style.display='None';
+ document.getElementById('piemay').style.display='None';
+ document.getElementById('piejune').style.display='None';
+ document.getElementById('piejuly').style.display='None';
+ document.getElementById('pieaug').style.display='None';
+ document.getElementById('piesept').style.display='None';
+ document.getElementById('pieoct').style.display='None';
+ document.getElementById('pienov').style.display='None';
+ document.getElementById('piedec').style.display='block';
+ document.getElementById('piejan21').style.display='None';
+ document.getElementById('piefeb21').style.display='None';
+ document.getElementById('piemar21').style.display='None';
+ document.getElementById('pieapr21').style.display='None';
+ document.getElementById('nocases').style.display='None';
+ document.getElementById('posneg').style.display='None';
+
+ }
+ else if(month == 'January-21'){
+ 
+ document.getElementById('piemar').style.display='None';
+ document.getElementById('pieapr').style.display='None';
+ document.getElementById('piemay').style.display='None';
+ document.getElementById('piejune').style.display='None';
+ document.getElementById('piejuly').style.display='None';
+ document.getElementById('pieaug').style.display='None';
+ document.getElementById('piesept').style.display='None';
+ document.getElementById('pieoct').style.display='None';
+ document.getElementById('pienov').style.display='None';
+ document.getElementById('piedec').style.display='None';
+ document.getElementById('piejan21').style.display='block';
+ document.getElementById('piefeb21').style.display='None';
+ document.getElementById('piemar21').style.display='none';
+ document.getElementById('pieapr21').style.display='None';
+ document.getElementById('nocases').style.display='None';
+ document.getElementById('posneg').style.display='None';
+
+ }
+ else if(month == 'February-21'){
+ 
+ document.getElementById('piemar').style.display='None';
+ document.getElementById('pieapr').style.display='none';
+ document.getElementById('piemay').style.display='None';
+ document.getElementById('piejune').style.display='None';
+ document.getElementById('piejuly').style.display='None';
+ document.getElementById('pieaug').style.display='None';
+ document.getElementById('piesept').style.display='None';
+ document.getElementById('pieoct').style.display='None';
+ document.getElementById('pienov').style.display='None';
+ document.getElementById('piedec').style.display='None';
+ document.getElementById('piejan21').style.display='None';
+ document.getElementById('piefeb21').style.display='Block';
+ document.getElementById('piemar21').style.display='None';
+ document.getElementById('pieapr21').style.display='None';
+ document.getElementById('nocases').style.display='None';
+ document.getElementById('posneg').style.display='None';
+ }
+ else if(month == 'March-21'){
+ 
+ document.getElementById('piemar').style.display='None';
+ document.getElementById('pieapr').style.display='none';
+ document.getElementById('piemay').style.display='None';
+ document.getElementById('piejune').style.display='None';
+ document.getElementById('piejuly').style.display='None';
+ document.getElementById('pieaug').style.display='None';
+ document.getElementById('piesept').style.display='None';
+ document.getElementById('pieoct').style.display='None';
+ document.getElementById('pienov').style.display='None';
+ document.getElementById('piedec').style.display='None';
+ document.getElementById('piejan21').style.display='None';
+ document.getElementById('piefeb21').style.display='None';
+ document.getElementById('piemar21').style.display='block';
+ document.getElementById('pieapr21').style.display='None';
+ document.getElementById('nocases').style.display='None';
+ document.getElementById('posneg').style.display='None';
+ }
+ else if(month == 'April-21'){
+ 
+ document.getElementById('piemar').style.display='None';
+ document.getElementById('pieapr').style.display='None';
+ document.getElementById('piemay').style.display='None';
+ document.getElementById('piejune').style.display='None';
+ document.getElementById('piejuly').style.display='None';
+ document.getElementById('pieaug').style.display='None';
+ document.getElementById('piesept').style.display='None';
+ document.getElementById('pieoct').style.display='None';
+ document.getElementById('pienov').style.display='None';
+ document.getElementById('piedec').style.display='None';
+ document.getElementById('piejan21').style.display='None';
+ document.getElementById('piefeb21').style.display='None';
+ document.getElementById('piemar21').style.display='None';
+ document.getElementById('pieapr21').style.display='Block';
+ document.getElementById('nocases').style.display='None';
+ document.getElementById('posneg').style.display='None';
+ }
+ else if(month == 'Cases in india'){
+ 
+ document.getElementById('piemar').style.display='None';
+ document.getElementById('pieapr').style.display='None';
+ document.getElementById('piemay').style.display='None';
+ document.getElementById('piejune').style.display='None';
+ document.getElementById('piejuly').style.display='None';
+ document.getElementById('pieaug').style.display='None';
+ document.getElementById('piesept').style.display='None';
+ document.getElementById('pieoct').style.display='None';
+ document.getElementById('pienov').style.display='None';
+ document.getElementById('piedec').style.display='None';
+ document.getElementById('piejan21').style.display='None';
+ document.getElementById('piefeb21').style.display='None';
+ document.getElementById('piemar21').style.display='None';
+ document.getElementById('pieapr21').style.display='None';
+ document.getElementById('nocases').style.display='Block';
+ document.getElementById('posneg').style.display='None';
+ }
+ else if(month == 'Sentiment of tweets month-wise'){
+ document.getElementById('piemar').style.display='None';
+ document.getElementById('pieapr').style.display='None';
+ document.getElementById('piemay').style.display='None';
+ document.getElementById('piejune').style.display='None';
+ document.getElementById('piejuly').style.display='None';
+ document.getElementById('pieaug').style.display='None';
+ document.getElementById('piesept').style.display='None';
+ document.getElementById('pieoct').style.display='None';
+ document.getElementById('pienov').style.display='None';
+ document.getElementById('piedec').style.display='None';
+ document.getElementById('piejan21').style.display='None';
+ document.getElementById('piefeb21').style.display='None';
+ document.getElementById('piemar21').style.display='None';
+ document.getElementById('pieapr21').style.display='None';
+ document.getElementById('nocases').style.display='None';
+ document.getElementById('posneg').style.display='block';
+ }
+
+}
+</script>
+
+
+</html>

@@ -1,0 +1,162 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/apple-icon.png' %}">
+  <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    BE PROJECT
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- CSS Files -->
+  <link href="{% static 'css/material-dashboard.css' %}" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="{% static 'demo/demo.css' %}" rel="stylesheet" />
+  <style>
+     img:hover {
+        width:300;
+        height:300;
+        box-shadow: 5px 5px 5px 5px #888888;
+      }
+      a.fill-div {
+        display: block;
+        height: 100%;
+        width: 100%;
+        text-decoration: none;
+      }
+     
+  
+  .box {
+      width: 150px;
+      height: 50px;
+      border: none;
+      font-size: 18px;
+      color: white;
+      background-color:#7a2696;
+      box-shadow: 4px 4px black;
+      border-radius:5px;
+      margin:15px 5px;
+      padding:15px 5px;
+    }
+   
+  
+  </style>
+</head>
+
+<body class="dark-edition">
+  <div class="wrapper ">
+    <div class="sidebar" data-color="purple" data-background-color="black" data-image="{% static 'img/sidebar-2.jpg' %}">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+      <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
+        Group Id: 42
+        </a></div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li class="nav-item  ">
+            <a class="nav-link" href="{% url 'home' %}">
+              <i class="material-icons">home</i>
+              <p>Home</p>
+            </a>
+          </li>
+         
+          <li class="nav-item active ">
+            <a class="nav-link" href="{% url 'trending' %}">
+              <i class="material-icons">trending_up</i>
+              <p>Trending</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="{% url 'history' %} ">
+              <i class="material-icons">analytics</i>
+              <p>Corona Analysis</p>
+            </a>
+          </li>
+         
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'map' %} ">
+              <i class="material-icons">equalizer </i>
+              <p>Algorithm</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="{% url 'aboutus' %} ">
+              <i class="material-icons">groups</i>
+              <p>About us</p>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel">
+     <!-- Navbar -->
+     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
+      <div class="container-fluid">
+        <div class="navbar-wrapper">
+          <a class="navbar-brand" href="javascript:void(0)">Trending</a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="navbar-toggler-icon icon-bar"></span>
+          <span class="navbar-toggler-icon icon-bar"></span>
+          <span class="navbar-toggler-icon icon-bar"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+     <div class="content">
+        <div class="container-fluid">
+          <div class="input-group">
+            <div class="col-md-6">
+                           
+                
+            </div>
+          <br>
+        <div id = "myDiv" class="col-md-6" ></div>
+      <form method="post" method="post" >
+      <div class="col-md-6" style="color: white;" id="mydiv">
+      
+        {% csrf_token %}
+        {{out}}
+        <br><br>
+        {{counter}}
+        <br>
+        <img  src="{% static 'img/bar2.png' %}" style="display:block;width:800px; border: 5px solid #000;"/><br>
+        <br>
+        
+        <img  src="{% static 'img/trend1.png' %}" style="display:block;width:800px; border: 5px solid #000;"/><br>
+        <br>
+        <iframe src="{% static 'html/trend2.html' %}" style="display:block;width:800px; border: 5px solid #000;" height="800">
+        </iframe> 
+        <img  src="{% static 'img/trend3.png' %}" style="display:block;width:800px; border: 5px solid #000;"/><br>
+
+      </div>  
+</form>
+       
+          </div>
+      </div>
+       
+            
+
+        </div></div>
+  
+}
+
+        
+  </script>
+    
+ 
+</body>
+
+</html>
